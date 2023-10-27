@@ -8,7 +8,7 @@ from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
 import re
 
-# CSV dosyasını okuma
+# Json dosyasını okuma
 with open("data.json", "r", encoding="UTF-8") as f:
     data = json.load(f)
 
@@ -21,6 +21,7 @@ def filter(text):
     text = text.encode('ascii', 'ignore').decode('ascii')
     text = re.sub(r'[^a-zA-Z0-9\s]', '', text)
     text = re.sub(r'\s+', ' ', text)
+    text = text.replace("<br />"," ")
     text = text.strip()
     return text
 
